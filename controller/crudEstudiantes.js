@@ -3,7 +3,7 @@ import {conectar} from "../model/db_conectar.js";
 var crud_estudiantes=({});
 
 crud_estudiantes.leer=(req,res)=>{
-    conectar.query('select e.id_estudiante,e.carne,e.nombres,e.apellidos,e.direccion,e.telefono,e.correo_electronico,ts.id_tipos_sangre,ts.sangre,date_format(e.fecha_nacimiento,"%Y-%m-%d")as fecha_nacimiento from estudiantes as e inner join tipos_sangre as ts on e.id_tipo_sangre=ts.id_tipos_sangre;',(err,result)=>{
+    conectar.query('select e.id_estudiante,e.carne,e.nombres,e.apellidos,e.direccion,e.telefono,e.correo_electronico,ts.id_tipos_sangre,ts.sangre,date_format(e.fecha_nacimiento,"%Y-%m-%d")as fecha_nacimiento from estudiantes as e inner join tipos_sangre as ts on e.id_tipo_sangre=ts.id_tipos_sangre order by e.id_estudiante;',(err,result)=>{
         if(err){
             throw err;
         }else{

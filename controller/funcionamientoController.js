@@ -1,12 +1,12 @@
 var manualFuncionamiento=({});
 
 manualFuncionamiento.agregarEstudiante=(req,res)=>{
-    res.render('extra/FuncAgregarEstudiante');
+    res.render('manuals/FuncAgregarEstudiante');
 };
 manualFuncionamiento.modificarEstudiante=(req,res)=>{
-    res.render('extra/FuncModificarEstudiante');
+    res.render('manuals/FuncModificarEstudiante');
 };
 manualFuncionamiento.eliminarEstudiante=(req,res)=>{
-    res.render('extra/FuncEliminarEstudiante');
+    res.render('manuals/FuncEliminarEstudiante');
 };
 export{manualFuncionamiento}

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+
  <%- include ('../partials/head') %>
-</head>
+
 
 <body>
-  <header>
+
     <%- include('../partials/header'); %>
-  </header>
+
 
 <%- include('../modal/modal'); %>
-      <div class="container pt-5 mb-5" >
+      <div class="container pt-5 mb-5 text-center" >
     <h2>Crud Estudiantes</h2>
     
     <br />
     <br />
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="limpiarForm();">
-      Nuevo
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="limpiarForm();"  data-bs-placement="right" title="Agregar Estudiante Nuevo">
+      Nuevo Estudiante
     </button>
     <br />
     <br />
@@ -51,9 +51,9 @@
     </table>
   </div>
 
-  <div class="mt-5 p-4 bg-dark text-white text-center">
+  
     <%- include('../partials/footer'); %>
-  </div>
+
   <script type="text/javascript">
     $('#tbl_estudiantes').on('click','tr td',(e)=>{
       var target;
@@ -122,6 +122,12 @@
       
     }
   </script>
+  <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    </script>
 </body>
 
 </html>
