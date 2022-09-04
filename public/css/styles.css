@@ -1,0 +1,14 @@
+body{
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    }
+
+.footer{
+    margin-top: auto;
+    display: table;
+    width: 100%;
+    height: 13vh;
+    text-align: center;
+    }

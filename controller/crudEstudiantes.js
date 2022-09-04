@@ -9,7 +9,7 @@ crud_estudiantes.leer=(req,res)=>{
         }else{
             conectar.query('SELECT id_tipos_sangre,sangre FROM tipos_sangre;',(err,resulta)=>{
                 if(err){
-                    throw err;
+                    console.log(err);
                 }else{
                     res.render('estudiantes/index',{
                         resultado:result,
