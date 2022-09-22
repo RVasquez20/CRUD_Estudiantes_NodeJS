@@ -5,7 +5,10 @@
  <%- include ('../partials/head') %>
 
 
-<body>
+<body style="min-height: 100vh;
+margin: 0;
+display: flex;
+flex-direction: column;">
 
     <%- include('../partials/header'); %>
 
@@ -29,24 +32,29 @@
           <th>Apellidos</th>
           <th>Direccion</th>
           <th>Telefono</th>
-          <th>Correo</th>
-          <th>Tipo de Sangre</th>
+          <th>Genero</th>
+          <th>Email</th>
           <th>Fecha de Nacimiento</th>
         </tr>
       </thead>
       <tbody id="tbl_estudiantes" style="cursor: pointer;">
         <% resultado.forEach((estudiante)=>{ %>
-          <tr data-id_estudiante="<%=estudiante.id_estudiante%>" data-id_tipo_sangre="<%=estudiante.id_tipos_sangre%>">
+          <tr data-id_estudiante="<%=estudiante.id_estudiante%>">
             <td><%= estudiante.carne %></td>
             <td><%= estudiante.nombres %></td>
             <td><%= estudiante.apellidos %></td>
             <td><%= estudiante.direccion %></td>
             <td><%= estudiante.telefono %></td>
-            <td><%= estudiante.correo_electronico %></td>
-            <td><%= estudiante.sangre %></td>
+            <%if(estudiante.genero==1){%>
+              <td>Femenino</td>
+              <%}else{%>
+                <td>Masculino</td>
+            <%}%>
+            <td><%= estudiante.email %></td>
             <td><%= estudiante.fecha_nacimiento %></td>
           </tr>
           <% }); %>
+          
       </tbody>
     </table>
   </div>
@@ -57,16 +65,16 @@
   <script type="text/javascript">
     $('#tbl_estudiantes').on('click','tr td',(e)=>{
       var target;
-      var id_estudiante,carnet,nombres,apellidos,direccion,telefono,correo_electronico,id_tipo_sangre,fecha_nacimiento;
+      var id_estudiante,carnet,nombres,apellidos,direccion,telefono,genero,email,fecha_nacimiento;
       target = $(e.target);
       id_estudiante=target.parent().data('id_estudiante');
-      id_tipo_sangre=target.parent().data('id_tipo_sangre');
       carnet=target.parent("tr").find("td").eq(0).html();
       nombres=target.parent("tr").find("td").eq(1).html();
       apellidos=target.parent("tr").find("td").eq(2).html();
       direccion=target.parent("tr").find("td").eq(3).html();
       telefono=target.parent("tr").find("td").eq(4).html();
-      correo_electronico=target.parent("tr").find("td").eq(5).html();
+      genero=target.parent("tr").find("td").eq(5).html();
+      email=target.parent("tr").find("td").eq(6).html();
       fecha_nacimiento=target.parent("tr").find("td").eq(7).html();
       $('#txt_id').val(id_estudiante);
       $('#txt_carne').val(carnet);
@@ -74,8 +82,12 @@
       $('#txt_apellidos').val(apellidos);
       $('#txt_direccion').val(direccion);
       $('#txt_telefono').val(telefono);
-      $('#txt_email').val(correo_electronico);
-      $('#txt_tipo_sangre').val(id_tipo_sangre);
+      $('#txt_email').val(email);
+      if(genero=="Masculino"){
+        $('#drop_genero').val(0);
+      }else{
+        $('#drop_genero').val(1);
+      }
       $('#txt_fecha_nacimiento').val(fecha_nacimiento);
       $('#btn_agregar').hide();
       $('#btn_modificar').show();
@@ -92,20 +104,6 @@
     });
   </script>
   <script>
-    function carnetValidation(textbox) {
-      const pattern = /(^E{1})([0-9]{3})$/;
-      if (textbox.value === "") {
-        textbox.setCustomValidity
-          ('Ingrese el Carnet');
-      } else if (!pattern.test(textbox.value)) {
-        textbox.setCustomValidity
-          ('Ingrese un carnet Valido: E001-E999');
-      }else {
-        textbox.setCustomValidity('');
-    }
-    return true;
-    }
-
     function limpiarForm(){
       $('#txt_id').val(0);
       $("#txt_carne").val("");
@@ -114,7 +112,7 @@
       $("#txt_direccion").val("");
       $("#txt_telefono").val("");
       $("#txt_email").val("");
-      $("#txt_tipo_sangre").val("Seleccione el tipo de sangre");
+      $("#drop_genero").val("Seleccione el tipo de sangre");
       $("#txt_fecha_nacimiento").val("");
       $("#btn_agregar").show();
       $("#btn_modificar").hide();

@@ -18,8 +18,7 @@
             </div>
             <div class="mb-3 mt-3">
               <label for="text" class="form-label">Carne:</label>
-              <input type="text" class="form-control" id="txt_carne" name="txt_carne" placeholder="E001"
-                onchange="carnetValidation(this);" required/>
+              <input type="text" class="form-control" id="txt_carne" name="txt_carne" placeholder="E001" required/>
             </div>
             <div class="mb-3">
               <label for="text" class="form-label">Nombres:</label>
@@ -45,12 +44,11 @@
               <input type="text" class="form-control" id="txt_email" name="txt_email" placeholder="Ingrese Email" required/>
             </div>
             <div class="mb-3">
-              <label for="text" class="form-label">Tipo de Sangre:</label>
-              <select name="txt_tipo_sangre" id="txt_tipo_sangre" class="form-select" required />
+              <label for="text" class="form-label">Genero:</label>
+              <select name="drop_genero" id="drop_genero" class="form-select" required />
                 <option selected>Seleccione el tipo de sangre</option>
-                <%tipos_sangre.forEach((tSangre)=>{%>
-                <option value="<%=tSangre.id_tipos_sangre%>"><%=tSangre.sangre%></option>
-                <%});%>
+                <option value="0">Masculino</option>
+                <option value="1">Femenino</option>
               </select>
             </div>
             <div class="mb-3">

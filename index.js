@@ -1,6 +1,5 @@
 import express from "express";
 import {crud_estudiantes} from "./controller/crudEstudiantes.js"
-import { manualFuncionamiento } from "./controller/funcionamientoController.js";
 
 const app = express();
 app.use(express.urlencoded({extended:false}));
@@ -13,7 +12,4 @@ app.listen('4000',()=>{
 })
 
 app.get('/',crud_estudiantes.leer)
-app.get('/manAgregarEstudiante',manualFuncionamiento.agregarEstudiante)
-app.get('/manModificarEstudiante',manualFuncionamiento.modificarEstudiante)
-app.get('/manEliminarEstudiante',manualFuncionamiento.eliminarEstudiante)
 app.post('/crud_estudiantes',crud_estudiantes.crud)
